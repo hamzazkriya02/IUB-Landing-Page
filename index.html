@@ -12,341 +12,335 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <style>
+      :root {
+        --bg: #f4fbff;
+        --mustard: #f4b942;
+        --navy: #213c8d;
+        --card-bg: #ffffff;
+        --shadow: 0 10px 18px rgba(23, 38, 83, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: var(--bg);
+        color: #14223a;
+        overflow-x: hidden;
+      }
+
+      .corner-btn {
+        position: fixed;
+        top: 20px;
+        padding: 10px 16px;
+        border-radius: 12px;
+        background: var(--mustard);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        z-index: 999;
+        transition: transform 0.2s ease;
+      }
+      .corner-btn:hover {
+        transform: translateY(-2px);
+      }
+      .left {
+        left: 20px;
+      }
+      .right {
+        right: 20px;
+      }
+
+      header {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 1;
+      }
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 12px;
+      }
+      .header-row h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: black;
+      }
+      .main {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1000px;
+        margin: 140px auto 0 auto;
+        gap: 80px;
+      }
+
+      .left-section,
+      .right-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .left-section {
+        margin-left: -90px;
+        margin-top: -30px;
+      }
+
+      .time-row {
+        display: flex;
+        gap: 10px;
+      }
+      .time-box {
+        width: 90px;
+        height: 90px;
+        background: var(--card-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        font-weight: 700;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .date-box {
+        background: var(--card-bg);
+        padding: 10px 24px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        font-weight: 600;
+      }
+      .weather-row {
+        display: flex;
+        gap: 18px;
+      }
+      .weather-item {
+        background: #1e2b70;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .help-row {
+        display: flex;
+        gap: 20px;
+      }
+      .help-card {
+        background: var(--card-bg);
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+        width: 145px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .help-card:hover {
+        transform: scale(1.05);
+      }
+      .help-card img {
+        width: 55px;
+        height: 55px;
+      }
+
+      .top-buttons {
+        display: flex;
+        gap: 10px;
+      }
+      .portal-btn {
+        background: var(--navy);
+        color: #fff;
+        border: 2px solid var(--mustard);
+        border-radius: 12px;
+        padding: 10px 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .portal-btn:hover {
+        background: #142c7d;
+      }
+
+      .right-section {
+        flex: 0 0 460px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+      }
+
+      .search-container {
+        display: flex;
+        width: 100%;
+        max-width: 460px;
+        background: var(--card-bg);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      #searchInput {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #333;
+        font-style: italic;
+      }
+      #voiceBtn {
+        background: none;
+        border: none;
+        color: var(--navy);
+        width: 50px;
+        cursor: pointer;
+      }
+      #searchBtn {
+        background: var(--navy);
+        color: #fff;
+        border: none;
+        width: 50px;
+        cursor: pointer;
+      }
+      #voiceBtn i,
+      #searchBtn i {
+        font-size: 18px;
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 460px;
+      }
+      .carousel-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        object-fit: contain;
+      }
+      .carrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        background: #193183;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      #prev {
+        left: -45px;
+      }
+      #next {
+        right: -45px;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer-btn {
+        background: var(--mustard);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 19px 17px;
+        font-weight: 700;
+        cursor: pointer;
+        position: absolute;
+        bottom: 20px;
+        transition: transform 0.2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer-btn:hover {
+        transform: translateY(-2px);
+      }
+      footer .left.footer-btn {
+        left: 20px;
+        top: -4px;
+      }
+      footer .right.footer-btn {
+        right: 20px;
+        top: -4px;
+      }
+      .social-footer {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin: 0 80px;
+      }
+      .social-icon {
+        font-size: 26px;
+        color: var(--navy);
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      .social-icon:hover {
+        color: var(--mustard);
+      }
+
+      .help-centre {
+        color: #213c8d;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: left;
+        margin-top: -10px;
+      }
+
+      .divider {
+        width: 100%;
+        text-align: center;
+        border-bottom: 2px solid #213c8d;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+      }
+
+      .divider span {
+        background: var(--bg);
+        padding: 0 15px;
+        color: #213c8d;
+        font-weight: 700;
+        font-size: 18px;
+      }
+    </style>
   </head>
-  <style>
-    :root {
-      --bg: #f4fbff;
-      --mustard: #f4b942;
-      --navy: #213c8d;
-      --card-bg: #ffffff;
-      --shadow: 0 10px 18px rgba(23, 38, 83, 0.06);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-    }
-
-    body {
-      background: var(--bg);
-      color: #14223a;
-      overflow-x: hidden;
-    }
-
-    .corner-btn {
-      position: fixed;
-      top: 20px;
-      padding: 10px 16px;
-      border-radius: 12px;
-      background: var(--mustard);
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      z-index: 999;
-      transition: transform 0.2s ease;
-    }
-    .corner-btn:hover {
-      transform: translateY(-2px);
-    }
-    .left {
-      left: 20px;
-    }
-    .right {
-      right: 20px;
-    }
-
-    header {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 1;
-    }
-    .header-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-    .logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 12px;
-    }
-    .header-row h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: black;
-    }
-    .main {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 1000px;
-      margin: 140px auto 0 auto;
-      gap: 80px;
-    }
-
-    .left-section,
-    .right-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .left-section {
-      margin-left: -90px;
-      margin-top: -30px;
-    }
-
-    .time-row {
-      display: flex;
-      gap: 10px;
-    }
-    .time-box {
-      width: 90px;
-      height: 90px;
-      background: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      font-weight: 700;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-    }
-    .date-box {
-      background: var(--card-bg);
-      padding: 10px 24px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      font-weight: 600;
-    }
-    .weather-row {
-      display: flex;
-      gap: 18px;
-    }
-    .weather-item {
-      background: #1e2b70;
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .help-row {
-      display: flex;
-      gap: 20px;
-    }
-    .help-card {
-      background: var(--card-bg);
-      box-shadow: var(--shadow);
-      border-radius: 16px;
-      width: 145px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .help-card:hover {
-      transform: scale(1.05);
-    }
-    .help-card img {
-      width: 55px;
-      height: 55px;
-    }
-
-    .top-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    .portal-btn {
-      background: var(--navy);
-      color: #fff;
-      border: 2px solid var(--mustard);
-      border-radius: 12px;
-      padding: 10px 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .portal-btn:hover {
-      background: #142c7d;
-    }
-
-    .right-section {
-      flex: 0 0 460px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      width: 100%;
-    }
-
-    .search-container {
-      display: flex;
-      width: 100%;
-      max-width: 460px;
-      background: var(--card-bg);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    #searchInput {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 12px 16px;
-      font-size: 16px;
-      color: #333;
-      font-style: italic;
-    }
-    #voiceBtn {
-      background: none;
-      border: none;
-      color: var(--navy);
-      width: 50px;
-      cursor: pointer;
-    }
-    #searchBtn {
-      background: var(--navy);
-      color: #fff;
-      border: none;
-      width: 50px;
-      cursor: pointer;
-    }
-    #voiceBtn i,
-    #searchBtn i {
-      font-size: 18px;
-    }
-
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      max-width: 460px;
-    }
-    .carousel-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      object-fit: contain;
-    }
-    .carrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      background: #193183;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    #prev {
-      left: -45px;
-    }
-    #next {
-      right: -45px;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .footer-btn {
-      background: var(--mustard);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 19px 17px;
-      font-weight: 700;
-      cursor: pointer;
-      position: absolute;
-      bottom: 20px;
-      transition: transform 0.2s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .footer-btn:hover {
-      transform: translateY(-2px);
-    }
-    footer .left.footer-btn {
-      left: 20px;
-      top: -4px;
-    }
-    footer .right.footer-btn {
-      right: 20px;
-      top: -4px;
-    }
-    .social-footer {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin: 0 100px;
-    }
-    .social-icon {
-      font-size: 26px;
-      color: var(--navy);
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-    .social-icon:hover {
-      color: var(--mustard);
-    }
-    .social-footer {
-      display: flex;
-      gap: 18px;
-      margin: 0 80px;
-      justify-content: center;
-    }
-
-    .help-centre {
-      color: #213c8d;
-      font-weight: 700;
-      font-size: 18px;
-      text-align: left;
-      margin-top: -10px;
-    }
-
-    .divider {
-      width: 100%;
-      text-align: center;
-      border-bottom: 2px solid #213c8d;
-      line-height: 0.1em;
-      margin: 10px 0 20px;
-    }
-
-    .divider span {
-      background: var(--bg);
-      padding: 0 15px;
-      color: #213c8d;
-      font-weight: 700;
-      font-size: 18px;
-    }
-  </style>
   <body>
     <button class="corner-btn left" id="todoBtn">ToDo List</button>
     <button class="corner-btn right" id="googleBtn">Google Maps</button>
 
     <header>
       <div class="header-row">
-        <img src="./assets/iub-logo.png" alt="IUB Logo" class="logo" />
+        <img src="/assets/iub-logo.png" alt="IUB Logo" class="logo" />
         <h1>The Islamia University of Bahawalpur</h1>
       </div>
     </header>
@@ -375,15 +369,15 @@
 
         <div class="help-row">
           <div class="help-card" id="liveChat">
-            <img src="./assets/live_chat.svg" alt="Live Chat" />
+            <img src="/assets/live_chat.svg" alt="Live Chat" />
             <p>Live Chat</p>
           </div>
           <div class="help-card" id="announcement">
-            <img src="./assets/announcements.svg" alt="Announcements" />
+            <img src="/assets/announcements.svg" alt="Announcements" />
             <p>Announcements</p>
           </div>
           <div class="help-card" id="contact">
-            <img src="./assets/phone_email.svg" alt="Contact" />
+            <img src="/assets/phone_email.svg" alt="Contact" />
             <p>Contact No#</p>
           </div>
         </div>
@@ -410,7 +404,7 @@
 
         <div class="carousel-container">
           <button class="carrow" id="prev">‹</button>
-          <img id="slide" src="./assets/fee_structure_ads.jpg" alt="Slide" />
+          <img id="slide" src="/assets/fee_structure_ads.jpg" alt="Slide" />
           <button class="carrow" id="next">›</button>
         </div>
       </section>
@@ -529,19 +523,19 @@
 
       const slides = [
         {
-          src: "assets/fee_structure_ads.jpg",
+          src: "/assets/fee_structure_ads.jpg",
           link: "https://www.iub.edu.pk/fee-structure",
         },
         {
-          src: "assets/admission_last_date_ads.jpg",
+          src: "/assets/admission_last_date_ads.jpg",
           link: "https://www.iub.edu.pk/admissions",
         },
         {
-          src: "assets/merit_list_ads.jpg",
+          src: "/assets/merit_list_ads.jpg",
           link: "https://eportal.iub.edu.pk/meritlists/index.php?p=",
         },
         {
-          src: "assets/transport_schedule_ads.jpg",
+          src: "/assets/transport_schedule_ads.jpg",
           link: "https://drive.google.com/file/d/1Cte7DZAqOdvqTKsnzE8nQJPbgL2jFs3r/view?usp=sharing",
         },
       ];
